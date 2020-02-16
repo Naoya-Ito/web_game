@@ -23,9 +23,19 @@ set :rbenv_ruby, '2.6.0'
 set :log_level, :info
 
 namespace :deploy do
+  desc 'Sstart application'
+  task :start do
+    invoke 'unicorn:start'
+  end
+
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
+  end
+
+  desc 'Stop application'
+  task :stop do
+    invoke 'unicorn:stop'
   end
 
   desc 'Create database'
